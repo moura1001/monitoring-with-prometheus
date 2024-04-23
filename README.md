@@ -26,3 +26,16 @@ Servidor 3:
 ```
 docker run -d --name node-exporter3 -p 9103:9100 --network monitor bitnami/node-exporter:latest
 ```
+
+## Iniciar Prometheus
+
+```
+docker run -d --name prometheus -p 9090:9090 --network monitor \
+-v $(pwd)/prometheus.yml:/opt/bitnami/prometheus/conf/prometheus.yml \
+bitnami/prometheus:latest
+```
+
+**Prometheus UI:**
+```
+http://localhost:9090/targets/
+```
