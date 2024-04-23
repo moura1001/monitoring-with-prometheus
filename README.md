@@ -39,3 +39,11 @@ bitnami/prometheus:latest
 ```
 http://localhost:9090/targets/
 ```
+
+## Consultas
+
+A partir da página inicial **Graph**:
+
+- node_cpu_seconds_total
+- node_cpu_seconds_total{instance="node-exporter2:9100"} // filtragem por instância específica
+- node_ipvs_connections_total
