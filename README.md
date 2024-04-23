@@ -47,3 +47,29 @@ A partir da página inicial **Graph**:
 - node_cpu_seconds_total
 - node_cpu_seconds_total{instance="node-exporter2:9100"} // filtragem por instância específica
 - node_ipvs_connections_total
+
+## Bônus: Instrumentalizando uma aplicação Python Flask
+
+Através do pacote Prometheus Flask exporter
+
+Build:
+```
+docker build -t pythonserver .
+```
+
+Iniciar aplicação:
+```
+docker run -d --name pythonserver -p 8081:8080 --network monitor pythonserver
+```
+
+Simular tráfico de rede:
+```
+curl localhost:8081
+curl localhost:8081/home
+curl localhost:8081/contact
+```
+
+Consultas:
+- flask_http_request_duration_seconds_bucket
+- flask_http_request_total
+- process_virtual_memory_bytes
